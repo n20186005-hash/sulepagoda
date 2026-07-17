@@ -34,6 +34,12 @@ const items = m.items ?? [];
           </div>
 
           <p class="text-base leading-relaxed mb-4" style="color: var(--text-secondary);">{item.background}</p>
+          
+          {item.historicalLight && (
+            <div class="mb-5 p-4 rounded-xl text-sm leading-relaxed" style="background: color-mix(in srgb, var(--accent) 8%, transparent); border-left: 3px solid var(--accent); color: var(--text-secondary);">
+              {item.historicalLight}
+            </div>
+          )}
 
           <ul class="space-y-2.5 text-sm mt-auto" style="color: var(--text-secondary);">
             {item.points.map((point) => (

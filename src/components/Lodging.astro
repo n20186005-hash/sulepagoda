@@ -26,6 +26,32 @@ const options = l.options ?? [];
             </div>
           </div>
           <p class="text-base leading-relaxed mb-5" style="color: var(--text-secondary);">{v.highlight}</p>
+          
+          {(v.noiseIndex !== undefined || v.trafficIndex !== undefined) && (
+            <div class="mb-5 grid grid-cols-2 gap-4 border-y py-4" style="border-color: var(--border-color);">
+              {v.noiseIndex !== undefined && (
+                <div>
+                  <div class="text-xs mb-1" style="color: var(--text-muted);">{l.noiseIndexLabel || 'Noise'}</div>
+                  <div class="flex gap-1">
+                    {[1,2,3,4,5].map(i => (
+                      <div class={`h-1.5 flex-1 rounded-full ${i <= v.noiseIndex ? 'bg-[var(--accent)] opacity-80' : 'bg-gray-200 dark:bg-gray-700'}`}></div>
+                    ))}
+                  </div>
+                </div>
+              )}
+              {v.trafficIndex !== undefined && (
+                <div>
+                  <div class="text-xs mb-1" style="color: var(--text-muted);">{l.trafficIndexLabel || 'Traffic'}</div>
+                  <div class="flex gap-1">
+                    {[1,2,3,4,5].map(i => (
+                      <div class={`h-1.5 flex-1 rounded-full ${i <= v.trafficIndex ? 'bg-[var(--accent)] opacity-80' : 'bg-gray-200 dark:bg-gray-700'}`}></div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
+
           {v.commute && (
             <p class="text-sm leading-relaxed mb-5 px-4 py-3 rounded-xl border-l-4" style="background: color-mix(in srgb, var(--accent) 9%, transparent); border-color: var(--accent); color: var(--text-secondary);">
               {v.commute}

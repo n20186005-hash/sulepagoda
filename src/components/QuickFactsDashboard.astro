@@ -3,6 +3,7 @@ import { getI18n } from '../i18n/ui';
 const { messages } = getI18n(Astro.url);
 const q = messages.quickFactsDashboard;
 const items = q.items ?? [];
+const arch = q.architectureCard;
 ---
 
 <section id="quick-facts" class="section-padding" style="background: var(--bg-secondary);">
@@ -11,6 +12,27 @@ const items = q.items ?? [];
       <h2 class="font-display text-3xl sm:text-4xl font-semibold mb-3" style="color: var(--text-primary);">{q.title}</h2>
       <p class="text-base sm:text-lg leading-relaxed" style="color: var(--text-secondary);">{q.subtitle}</p>
     </div>
+
+    {arch && (
+      <div class="mb-8 rounded-3xl p-6 sm:p-8 border relative overflow-hidden" style="background: var(--card-bg); border-color: var(--border-color); box-shadow: var(--card-shadow);">
+        <div class="absolute top-0 left-0 w-full h-1" style="background: var(--accent);"></div>
+        <h3 class="text-xl font-semibold mb-6" style="color: var(--text-primary);">{arch.title}</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 divide-y sm:divide-y-0 sm:divide-x" style="border-color: var(--border-color);">
+          <div class="pt-4 sm:pt-0 sm:px-6 first:pl-0 flex flex-col justify-center">
+            <p class="text-4xl font-bold font-display mb-1" style="color: var(--text-primary);">{arch.height}</p>
+            <p class="text-sm" style="color: var(--text-secondary);">{arch.heightLabel}</p>
+          </div>
+          <div class="pt-4 sm:pt-0 sm:px-6 flex flex-col justify-center">
+            <p class="text-4xl font-bold font-display mb-1" style="color: var(--text-primary);">{arch.shape}</p>
+            <p class="text-sm" style="color: var(--text-secondary);">{arch.shapeLabel}</p>
+          </div>
+          <div class="pt-4 sm:pt-0 sm:px-6 flex flex-col justify-center">
+            <p class="text-4xl font-bold font-display mb-1" style="color: var(--text-primary);">{arch.gold}</p>
+            <p class="text-sm" style="color: var(--text-secondary);">{arch.goldLabel}</p>
+          </div>
+        </div>
+      </div>
+    )}
 
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
       {items.map((it) => (

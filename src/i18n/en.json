@@ -86,6 +86,15 @@
   "quickFactsDashboard": {
     "title": "Sule Pagoda at a Glance · Data Board",
     "subtitle": "A few numbers to read this golden pagoda at the heart of Yangon at a glance.",
+    "architectureCard": {
+      "title": "Architecture at a glance",
+      "height": "46 m",
+      "heightLabel": "Main stupa height ($\\approx 151$ ft)",
+      "shape": "Octagonal",
+      "shapeLabel": "Body structure ($Octagonal$)",
+      "gold": "Gold leaf",
+      "goldLabel": "Surface material"
+    },
     "items": [
       { "icon": "🛕", "label": "Pagoda / Pagoda", "value": "Urban faith center", "note": "Sule Pagoda is Yangon's downtown Buddhist landmark. Its octagonal body runs from base to spire, crowned by a gilded finial — a place for locals to pray and visitors to pilgrimage." },
       { "icon": "📿", "label": "Relic / Relic", "value": "Hair relic of the Buddha", "note": "The pagoda is said to enshrine a hair relic of the Buddha, sharing the same origin as Yangon's other great shrine, Shwedagon Pagoda — a key node of Burmese Buddhist faith." },
@@ -174,11 +183,10 @@
     "alsoKnownAs": {
       "title": "Highlights",
       "items": [
-        "A downtown golden pagoda believed founded during the Buddha's lifetime, over 2,000 years old",
-        "Enshrines a hair relic of the Buddha, sharing faith with Shwedagon Pagoda",
-        "Octagonal body from base to finial, gilded spire about 46 m high",
-        "A rallying point for the 1988 and 2007 peaceful demonstrations, carrying city memory",
-        "Surrounded by Maha Bandula Park, Yangon City Hall, and the Independence Monument"
+        "【Two-Millennia Ancient Shrine】 Believed to share the same origin as Shwedagon Pagoda, named after the guardian spirit 'Sule Nat' who helped locate the sacred hill, enshrining a precious hair relic of the Buddha.",
+        "【Eight-Faced Guardian】 A unique octagonal gilded stupa rising 46 meters. The eight-sided base echoes the eight planetary posts and animal signs of Burmese astrology, serving as a sanctuary where devotees pray according to their birth day.",
+        "【Geometric Origin】 In the mid-19th century, it was selected as the absolute geometric center of Yangon's urban planning. This pagoda is not only a religious sanctuary but a miraculous intersection of the Western colonial grid and ancient Eastern faith.",
+        "【City Memory】 The rallying point for the 1988 and 2007 peaceful demonstrations, surrounded by Maha Bandula Park, Yangon City Hall, and the Independence Monument."
       ]
     }
   },
@@ -320,13 +328,13 @@
     "sections": [
       {
         "id": "history",
-        "title": "Founding legend & ancient history",
-        "content": "Sule Pagoda is believed founded during the Buddha's lifetime, over 2,000 years old, among Yangon's oldest religious landmarks. Named after the guardian spirit 'Sule' (Nat), it has stood at the city's center since its founding, witnessing generations of Yangon city life."
+        "title": "Founding legend: Sularata, the guardian of millennia",
+        "content": "Legend has it that over 2,000 years ago, during the Buddha's lifetime, the King of Okkalapa (now Yangon) received eight hair relics from the Buddha. To enshrine them, he sought the 'sacred hill' (the current site of Shwedagon Pagoda) where relics of three previous Buddhas were buried. Sularata (or Sule), a powerful Nat (spirit) who had lived for millions of years at the site of today's Sule Pagoda, stepped forward. Using his ancient memory, he pointed out the direction of the sacred hill and helped escort the hair relics. To honor this crucial guardian spirit, people built a pagoda at the very spot where he lived and held meetings with other spirits, naming it after him. 'Sule' also means 'gathering/meeting' in Burmese, which marks the earliest spiritual origin of Sule Pagoda as the heart of the city."
       },
       {
         "id": "name",
-        "title": "The name 'Sule' and city memory",
-        "content": "'Sule' derives from the guardian spirit (Nat) in Burmese folk belief; the pagoda is named after the spirit and became the city's spiritual coordinate. At the central junction, it meshes with Maha Bandula Park and Yangon City Hall — the first urban reminder for every visitor."
+        "title": "Geometric Origin: The 'Coordinate Zero' of the colonial grid",
+        "content": "Sule Pagoda became the undisputed 'heart of the city' not only because of myths but also due to modern scientific planning. After the Second Anglo-Burmese War in 1852, British Army engineer Lieutenant Alexander Fraser redesigned Yangon using the classic Victorian 'checkerboard' grid. He chose Sule Pagoda as the absolute geometric center and reference origin for the entire city grid system. All major arteries (like Sule Pagoda Road) radiate outward from this pagoda. This perfect overlap of a 2,000-year-old Eastern Buddhist sanctuary with the geometric planning of Western modern industrial civilization is extremely rare in the history of global urban planning."
       },
       {
         "id": "reclining",
@@ -335,8 +343,8 @@
       },
       {
         "id": "yeonhwa",
-        "title": "Octagonal body & architecture",
-        "content": "Sule Pagoda's most distinctive feature is its octagonal body — eight-sided from base to finial, gilded outside. This form is unique among Burmese pagodas, giving it strong recognition in the city skyline."
+        "title": "Octagonal body & Burmese zodiac astrology",
+        "content": "Sule Pagoda's distinctive octagonal structure is not just an aesthetic design but a physical manifestation of Burmese traditional Buddhist astrology (Mahabote). In the Burmese calendar, a week is divided into eight days (Wednesday is split into morning and afternoon), each represented by a specific direction, planet, and guardian animal sign. The eight faces of the pagoda correspond exactly to these eight astrological directions. The base platform features prayer shrines in all eight directions, where devotees find the animal sign corresponding to their birth day and pour water over the Buddha image and guardian beast to pray for blessings, making the architecture the most intuitive expression of faith."
       },
       {
         "id": "faith",
@@ -363,7 +371,7 @@
             "text": "The pagoda sits at an open downtown junction; the octagonal gilded body stands out between City Hall and the park, with gentle platforms letting visitors approach the base without harming the heritage."
           },
           {
-            "title": "Signature: citizens & street life",
+            "title": "Faith Ecology: The convergence of street life and practice",
             "text": "The platform is where devotees circumambulate, offer flowers, and meditate at dawn — most active then, echoing the Buddhist 'life-protecting' spirit."
           },
           {
@@ -384,6 +392,11 @@
         "id": "legend",
         "title": "Urban legends (local oral tradition)",
         "content": "About Sule Pagoda and the guardian spirit 'Sule', a local oral tradition tied to city protection is passed down: the spirit is said to guard the peace of this place, and citizens revere the pagoda and pray. Such legends may not appear in official histories, but they let the public sense how this land was imagined and cherished."
+      },
+      {
+        "id": "nat_belief",
+        "title": "Fun Fact: When native spirits meet the foreign Buddha",
+        "content": "In Myanmar, Buddhism and the ancient 'Nat' (spirit) belief are not mutually exclusive, but rather ingeniously integrated. Nats were originally spirits of mountains, rivers, or deceased heroes in animism. When Buddhism arrived, these native spirits were not expelled; instead, they were 'recruited' as Buddhist guardian deities. Sule Pagoda is a perfect example: the pagoda itself is the supreme symbol of Buddhism (enshrining the Buddha's hair relic), but its name and location are credited to the ancient spirit 'Sularata'. Here, you can see devotees first pay respects to the Buddha, and then pray for worldly peace and wealth before the dedicated Nat shrines at the pagoda's base. This tacit division of labor—'the Buddha governs the afterlife, the spirit governs the present life'—forms the most authentic and vivid folk faith ecology in Myanmar."
       }
     ],
     "didYouKnow": {
@@ -729,6 +742,7 @@
         "name": "Maha Bandula Park · view of pagoda",
         "location": "Park viewpoint",
         "background": "From dawn to dusk, the city greenery and gilded spire below are the classic 'park—pagoda' composition; the body silhouettes beautifully backlit.",
+        "historicalLight": "Historical light & shadow: This green space was once a Victorian-era square. The soft morning light penetrates the tropical morning mist and strikes the golden pagoda. This is not only the effect of natural light, but also because the pagoda body has been continuously gilded by devotees for hundreds of years, forming an irregular diffuse reflection on the surface, making the pagoda seem to have its own halo against the greenery.",
         "points": [
           "Use a 16-35mm wide lens, using the park path as a leading line.",
           "Use the path to lead the eye to the spire.",
@@ -742,6 +756,7 @@
         "name": "Street corner · urban overlook",
         "location": "Street corner",
         "background": "From the street side, frame 'traffic + gilded spire + colonial buildings' together — Sule Pagoda's most recognizable spot.",
+        "historicalLight": "Historical light & shadow: Lieutenant Fraser's 19th-century grid planning made all roads converge here. In the evening, the glass of the old colonial buildings on the west side reflects warm light, intertwining with the traffic flow and headlights at the intersection, forming a strong collision of light and shadow between 'modern speed' and 'ancient faith'.",
         "points": [
           "Use a 70-200mm telephoto to pull the tension between body and buildings from afar.",
           "Side light on the body at dawn is softest.",
@@ -755,6 +770,7 @@
         "name": "Platform & praying crowd",
         "location": "Base platform",
         "background": "The devotees circumambulating and the gilded body's colors are the pagoda's most atmospheric window; paired with morning light, the body sparks the imagination.",
+        "historicalLight": "Historical light & shadow: The platform floor tiles have been polished by countless barefoot devotees over a long period of time. When the blue hour comes, the warm light of the pagoda base and the cool tone of the sky form a wonderful reflection on the ground, and every light spot hides the traces of time.",
         "points": [
           "Shoot in blue hour; sky and body colors balance best.",
           "Leave large warm sky with the body silhouettes."
@@ -767,6 +783,7 @@
         "name": "Night lights",
         "location": "Pagoda toward the junction",
         "background": "After dark, the body lights up, the gilded surface reflects a river of lights — ideal for closing long-exposure night shots and urban portraits.",
+        "historicalLight": "Historical light & shadow: With the development of Yangon's urban electrification, Sule Pagoda's night lighting system has also undergone several changes. Today's floodlighting not only illuminates the pagoda body but also makes this 46-meter-high golden pyramid look like a glowing lighthouse among the dark-toned colonial buildings around it, declaring the absolute core position of faith in urban changes.",
         "points": [
           "Use lights as a leading line toward the distance.",
           "Raise ISO or use stabilization for night frames."

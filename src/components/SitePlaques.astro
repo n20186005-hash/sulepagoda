@@ -53,8 +53,13 @@ const { embedded = false } = Astro.props;
               <span class="inline-block text-xs font-semibold px-3 py-1 rounded-full mb-4" style="background: var(--accent); color: #fff;">{it.badge}</span>
               <h4 class="font-semibold text-2xl mb-2" style="color: var(--text-primary);">{lang === 'my' ? it.myTitle : it.title}</h4>
               <p class="text-sm" style="color: var(--text-tertiary);">{lang === 'my' ? it.myTitleZh : ''}</p>
-              <div class="absolute bottom-6 text-[11px] opacity-40 uppercase tracking-widest flex items-center gap-1">
-                <span>🔄</span> Click to translate
+              <div class="absolute bottom-6 flex items-center gap-4 text-[11px] opacity-50 uppercase tracking-widest">
+                <div class="flex items-center gap-1" title="现场原图对照">
+                  <span>📷</span> 现场原图对照
+                </div>
+                <div class="flex items-center gap-1">
+                  <span>🔄</span> Click to translate
+                </div>
               </div>
             </article>
 
@@ -91,8 +96,13 @@ const { embedded = false } = Astro.props;
               <span class="inline-block text-xs font-semibold px-3 py-1 rounded-full mb-4" style="background: var(--accent); color: #fff;">{it.badge}</span>
               <h4 class="font-semibold text-2xl mb-2" style="color: var(--text-primary);">{lang === 'my' ? it.myTitle : it.title}</h4>
               <p class="text-sm" style="color: var(--text-tertiary);">{lang === 'my' ? it.myTitleZh : ''}</p>
-              <div class="absolute bottom-6 text-[11px] opacity-40 uppercase tracking-widest flex items-center gap-1">
-                <span>🔄</span> Click to translate
+              <div class="absolute bottom-6 flex items-center gap-4 text-[11px] opacity-50 uppercase tracking-widest">
+                <div class="flex items-center gap-1" title="现场原图对照">
+                  <span>📷</span> 现场原图对照
+                </div>
+                <div class="flex items-center gap-1">
+                  <span>🔄</span> Click to translate
+                </div>
               </div>
             </article>
 
