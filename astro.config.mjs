@@ -6,7 +6,7 @@ export default defineConfig({
   site: 'https://sulepagoda.com',
   output: 'static',
   i18n: {
-    defaultLocale: 'zh',
+    defaultLocale: 'my',
     locales: ['zh', 'en', 'my', 'ja', 'ko'],
     routing: {
       prefixDefaultLocale: true,
