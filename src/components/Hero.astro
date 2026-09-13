@@ -1,19 +1,50 @@
 ---
 import { getI18n } from '../i18n/ui';
+import { getWeather, conditionIcon, conditionKey, clockFromIso, shiftClock } from '../lib/weather';
+
 const { messages } = getI18n(Astro.url);
 const h = messages.hero;
 const facts = h.quickFacts ?? [];
 const factsSource = h.factsSource ?? {};
 const live = h.liveInfo ?? {};
 const planner = h.sunsetPlanner ?? {};
+
+const weather = await getWeather();
+const conditions: Record<string, string> = messages.weather?.conditions ?? {};
+
+const weatherIcon = weather ? conditionIcon[conditionKey(weather.current.weatherCode)] : '🌤️';
+const weatherText = weather
+  ? `${conditions[conditionKey(weather.current.weatherCode)] ?? ''} ${weather.current.temperature}°C`.trim()
+  : '—';
+const sunsetText = weather ? clockFromIso(weather.today.sunset) : '—';
+const arriveText = weather ? shiftClock(sunsetText, -60) : '—';
+const blueHourText = weather ? `${sunsetText}–${shiftClock(sunsetText, 30)}` : '—';
 ---
 
 <section id="overview" class="relative min-h-[84vh] sm:min-h-[90vh] flex items-center justify-center text-center overflow-hidden">
-  <div class="absolute inset-0" style={`background-image: linear-gradient(rgba(15,32,21,0.55), rgba(15,32,21,0.62)), url('/gallery/sule-pagoda-1.webp'); background-size: cover; background-position: center;`}></div>
+  <picture>
+    <source srcset="/gallery/sule-pagoda-yangon-myanmar-1.webp" type="image/webp" />
+    <img
+      src="/gallery/sule-pagoda-yangon-myanmar-1.jpg"
+      alt={h.imageAlt}
+      class="absolute inset-0 w-full h-full object-cover"
+      width="1920"
+      height="1440"
+      loading="eager"
+      decoding="async"
+      fetchpriority="high"
+    />
+  </picture>
+  <div class="absolute inset-0" style="background: linear-gradient(rgba(15,32,21,0.55), rgba(15,32,21,0.62));"></div>
   <div class="relative z-10 px-4 sm:px-6 py-16 sm:py-20 max-w-4xl w-full animate-fade-in-up">
-    <span class="inline-flex max-w-full flex-wrap items-center justify-center gap-1 px-3 py-1 mb-5 rounded-full text-xs sm:text-sm font-medium" style="background: rgba(255,255,255,0.15); color: #fff; backdrop-filter: blur(4px);">
+    <span class="inline-flex max-w-full flex-wrap items-center justify-center gap-1 px-3 py-1 mb-2 rounded-full text-xs sm:text-sm font-medium" style="background: rgba(255,255,255,0.15); color: #fff; backdrop-filter: blur(4px);">
       ⭐ {h.rating} · {h.reviewCount}
     </span>
+    {h.ratingSource && (
+      <p class="text-[11px] sm:text-xs text-white/75 mb-5">
+        <a href={h.mapsUrl} target="_blank" rel="noopener noreferrer" class="underline decoration-white/30 underline-offset-2 hover:text-white">{h.ratingSource}</a>
+      </p>
+    )}
 
     <p class="text-xl sm:text-2xl text-yellow-400/90 mb-2 font-medium tracking-wide drop-shadow-sm" style="font-family: 'Padauk', sans-serif;">
       ဆူးလေဘုရား - ရန်ကုန်မြို့၏ အသည်းနှလုံး
@@ -45,19 +76,19 @@ const planner = h.sunsetPlanner ?? {};
 
     <!-- Live data widget -->
     <div class="flex justify-center mb-6">
-      <div class="inline-flex items-center gap-4 px-5 py-2.5 rounded-full" style="background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); backdrop-filter: blur(8px);">
+      <a href="#weather" class="inline-flex items-center gap-4 px-5 py-2.5 rounded-full transition hover:bg-white/20" style="background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); backdrop-filter: blur(8px);">
         <div class="flex items-center gap-2 text-sm text-white/90">
-          <span class="text-base">🌤️</span> 
+          <span class="text-base" aria-hidden="true">{weatherIcon}</span>
           <span>{live.weather}</span>
-          <span id="current-weather" class="font-medium">—</span>
+          <span class="font-medium">{weatherText}</span>
         </div>
         <div class="w-px h-4 bg-white/20"></div>
         <div class="flex items-center gap-2 text-sm text-white/90">
-          <span class="text-base">🌅</span> 
+          <span class="text-base">🌅</span>
           <span>{live.sunset}</span>
-          <span id="sunset-time" class="font-medium">—</span>
+          <span class="font-medium">{sunsetText}</span>
         </div>
-      </div>
+      </a>
     </div>
 
     {h.legend && h.legend.quote && (
@@ -79,15 +110,12 @@ const planner = h.sunsetPlanner ?? {};
             {planner.note && <p class="text-sm sm:text-base mt-2 text-white/80 leading-relaxed">{planner.note}</p>}
             {planner.seaGlare && (
               <p class="text-xs sm:text-sm mt-3 pt-3 text-white/75 leading-relaxed border-t" style="border-color: rgba(255,255,255,0.18);">
-                🌊 {planner.seaGlare}
+                🌇 {planner.seaGlare}
               </p>
             )}
             {planner.tideTip && (
               <p class="text-xs sm:text-sm mt-2 text-white/75 leading-relaxed">
                 ⚠️ {planner.tideTip}
-                {planner.tideUrl && (
-                  <a href={planner.tideUrl} target="_blank" rel="noopener noreferrer" class="underline decoration-white/40 underline-offset-2 hover:text-white ml-1">KHOA 潮汐表 ↗</a>
-                )}
               </p>
             )}
             <svg class="mt-3 w-full h-10" viewBox="0 0 320 40" preserveAspectRatio="none" aria-hidden="true" style="display:block;">
@@ -108,11 +136,11 @@ const planner = h.sunsetPlanner ?? {};
           <div class="grid grid-cols-2 gap-3 shrink-0">
             <div class="rounded-2xl px-4 py-3" style="background: rgba(15,32,21,0.28);">
               <p class="text-xs uppercase tracking-[0.18em] text-white/65">{planner.arriveLabel}</p>
-              <p id="sunset-arrive-time" class="text-xl font-semibold text-white mt-1">—</p>
+              <p class="text-xl font-semibold text-white mt-1">{arriveText}</p>
             </div>
             <div class="rounded-2xl px-4 py-3" style="background: rgba(15,32,21,0.28);">
               <p class="text-xs uppercase tracking-[0.18em] text-white/65">{planner.blueHourLabel}</p>
-              <p id="blue-hour-window" class="text-xl font-semibold text-white mt-1">—</p>
+              <p class="text-xl font-semibold text-white mt-1">{blueHourText}</p>
             </div>
           </div>
         </div>
@@ -145,168 +173,4 @@ const planner = h.sunsetPlanner ?? {};
       )}
     </div>
   </div>
-
-  <script is:inline>
-    (function () {
-      var weatherEl = document.getElementById('current-weather');
-      var sunsetEl = document.getElementById('sunset-time');
-      var arriveEl = document.getElementById('sunset-arrive-time');
-      var blueHourEl = document.getElementById('blue-hour-window');
-      if (!weatherEl || !sunsetEl) return;
-
-      var url =
-        'https://api.open-meteo.com/v1/forecast?latitude=16.7833&longitude=96.1667&current=temperature_2m,weather_code&daily=sunset&timezone=Asia/Yangon';
-
-      function weatherText(code, lang) {
-        if (lang === 'ja') {
-          if (code === 0) return '晴れ';
-          if (code === 1) return '晴れ時々';
-          if (code === 2) return 'くもり';
-          if (code === 3) return '曇り';
-          if (code === 45 || code === 48) return '霧';
-          if (code === 51 || code === 53 || code === 55) return '霧雨';
-          if (code === 56 || code === 57) return '凍雨（霧雨）';
-          if (code === 61 || code === 63 || code === 65) return '雨';
-          if (code === 66 || code === 67) return '凍雨';
-          if (code === 71 || code === 73 || code === 75) return '雪';
-          if (code === 77) return '霰';
-          if (code === 80 || code === 81 || code === 82) return 'にわか雨';
-          if (code === 85 || code === 86) return 'にわか雪';
-          if (code === 95) return '雷雨';
-          if (code === 96 || code === 99) return '激しい雷雨';
-          return '不明';
-        }
-        if (lang === 'ko') {
-          if (code === 0) return '맑음';
-          if (code === 1) return '대체로 맑음';
-          if (code === 2) return '구름 많음';
-          if (code === 3) return '흐림';
-          if (code === 45 || code === 48) return '안개';
-          if (code === 51 || code === 53 || code === 55) return '이슬비';
-          if (code === 56 || code === 57) return '어는 이슬비';
-          if (code === 61 || code === 63 || code === 65) return '비';
-          if (code === 66 || code === 67) return '어는 비';
-          if (code === 71 || code === 73 || code === 75) return '눈';
-          if (code === 77) return '싸락눈';
-          if (code === 80 || code === 81 || code === 82) return '소나기';
-          if (code === 85 || code === 86) return '소낙눈';
-          if (code === 95) return '뇌우';
-          if (code === 96 || code === 99) return '강한 뇌우';
-          return '알 수 없음';
-        }
-        if (lang === 'en') {
-          if (code === 0) return 'Clear';
-          if (code === 1) return 'Mainly clear';
-          if (code === 2) return 'Partly cloudy';
-          if (code === 3) return 'Overcast';
-          if (code === 45 || code === 48) return 'Fog';
-          if (code === 51 || code === 53 || code === 55) return 'Drizzle';
-          if (code === 56 || code === 57) return 'Freezing drizzle';
-          if (code === 61 || code === 63 || code === 65) return 'Rain';
-          if (code === 66 || code === 67) return 'Freezing rain';
-          if (code === 71 || code === 73 || code === 75) return 'Snow';
-          if (code === 77) return 'Snow grains';
-          if (code === 80 || code === 81 || code === 82) return 'Rain showers';
-          if (code === 85 || code === 86) return 'Snow showers';
-          if (code === 95) return 'Thunderstorm';
-          if (code === 96 || code === 99) return 'Severe thunderstorm';
-          return 'Unknown';
-        }
-        if (code === 0) return '晴';
-        if (code === 1) return '大部晴朗';
-        if (code === 2) return '多云';
-        if (code === 3) return '阴';
-        if (code === 45 || code === 48) return '雾';
-        if (code === 51 || code === 53 || code === 55) return '毛毛雨';
-        if (code === 56 || code === 57) return '冻毛毛雨';
-        if (code === 61 || code === 63 || code === 65) return '雨';
-        if (code === 66 || code === 67) return '冻雨';
-        if (code === 71 || code === 73 || code === 75) return '雪';
-        if (code === 77) return '米雪';
-        if (code === 80 || code === 81 || code === 82) return '阵雨';
-        if (code === 85 || code === 86) return '阵雪';
-        if (code === 95) return '雷暴';
-        if (code === 96 || code === 99) return '强雷暴';
-        return '未知天气';
-      }
-
-      function formatSunsetHHMM(isoLike) {
-        if (!isoLike || typeof isoLike !== 'string') return '—';
-        var tIndex = isoLike.indexOf('T');
-        if (tIndex === -1) return '—';
-        return isoLike.slice(tIndex + 1, tIndex + 6) || '—';
-      }
-
-      function formatClock(date) {
-        if (!(date instanceof Date) || isNaN(date.getTime())) return '—';
-        var hours = String(date.getHours()).padStart(2, '0');
-        var minutes = String(date.getMinutes()).padStart(2, '0');
-        return hours + ':' + minutes;
-      }
-
-      function parseIsoLike(isoLike) {
-        if (!isoLike || typeof isoLike !== 'string') return null;
-        var parsed = new Date(isoLike);
-        return isNaN(parsed.getTime()) ? null : parsed;
-      }
-
-      function setPlannerFallback() {
-        if (arriveEl) arriveEl.textContent = '—';
-        if (blueHourEl) blueHourEl.textContent = '—';
-      }
-
-      function setLoading() {
-        var lang = (document.documentElement.getAttribute('lang') || '').toLowerCase();
-        var msg = '数据获取中...';
-        if (lang.indexOf('ja') === 0) msg = '取得中...';
-        else if (lang.indexOf('ko') === 0) msg = '불러오는 중...';
-        else if (lang.indexOf('en') === 0) msg = 'Loading...';
-        weatherEl.textContent = msg;
-        sunsetEl.textContent = msg;
-      }
-
-      function setFallback() {
-        weatherEl.textContent = '—';
-        sunsetEl.textContent = '—';
-        setPlannerFallback();
-      }
-
-      setLoading();
-      fetch(url, { cache: 'no-store' })
-        .then(function (res) {
-          if (!res.ok) throw new Error('HTTP ' + res.status);
-          return res.json();
-        })
-        .then(function (data) {
-          var temp = data && data.current ? data.current.temperature_2m : undefined;
-          var code = data && data.current ? data.current.weather_code : undefined;
-          var sunset = data && data.daily && data.daily.sunset ? data.daily.sunset[0] : undefined;
-
-          if (typeof temp === 'number' && typeof code === 'number') {
-            var lang = (document.documentElement.getAttribute('lang') || '').toLowerCase();
-            var shortLang = lang.indexOf('zh') === 0 ? 'zh' : lang.slice(0, 2);
-            weatherEl.textContent = weatherText(code, shortLang) + ' ' + Math.round(temp) + '°C';
-          } else {
-            weatherEl.textContent = '—';
-          }
-          sunsetEl.textContent = formatSunsetHHMM(sunset);
-          var sunsetDate = parseIsoLike(sunset);
-          if (sunsetDate) {
-            if (arriveEl) {
-              var arriveDate = new Date(sunsetDate.getTime() - 60 * 60 * 1000);
-              arriveEl.textContent = formatClock(arriveDate);
-            }
-            if (blueHourEl) {
-              var blueHourEnd = new Date(sunsetDate.getTime() + 30 * 60 * 1000);
-              blueHourEl.textContent = formatClock(sunsetDate) + '–' + formatClock(blueHourEnd);
-            }
-          } else {
-            setPlannerFallback();
-          }
-        })
-        .catch(function () {
-          setFallback();
-        });
-    })();
-  </script>
 </section>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Sule Pagoda">
+  <rect width="512" height="512" fill="#0f2015"/>
+  <g transform="translate(256 256) scale(0.8) translate(-256 -256)">
+    <circle cx="256" cy="92" r="11" fill="#f0c95a"/>
+    <path d="M256 104l12 34h-24z" fill="#f0c95a"/>
+    <path d="M256 130l28 68h-56z" fill="#e0b43c"/>
+    <path d="M256 176l44 84h-88z" fill="#e0b43c"/>
+    <path d="M256 232l60 100h-120z" fill="#e0b43c"/>
+    <rect x="150" y="326" width="212" height="24" rx="6" fill="#c99a2e"/>
+    <rect x="126" y="350" width="260" height="28" rx="6" fill="#b98a26"/>
+    <rect x="102" y="378" width="308" height="32" rx="6" fill="#a97b20"/>
+    <rect x="196" y="410" width="120" height="58" rx="8" fill="#e0b43c"/>
+  </g>
+</svg>

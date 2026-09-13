@@ -1,0 +1,72 @@
+---
+import { getI18n } from '../i18n/ui';
+
+const { messages } = getI18n(Astro.url);
+const t = messages.itineraries ?? {};
+const general = [t.halfDay, t.fullDay].filter(Boolean);
+const audiences = t.audiences ?? [];
+---
+
+<section id="routes" class="section-padding" style="background: var(--bg-primary);">
+  <div class="max-w-6xl mx-auto px-4">
+    {t.eyebrow && (
+      <p class="text-xs uppercase tracking-[0.22em] mb-3 text-center" style="color: var(--text-muted);">{t.eyebrow}</p>
+    )}
+    <h2 class="font-display text-3xl sm:text-4xl font-semibold mb-3 text-center" style="color: var(--text-primary);">{t.title}</h2>
+    {t.subtitle && (
+      <p class="text-center text-base mb-9 max-w-3xl mx-auto leading-relaxed" style="color: var(--text-secondary);">{t.subtitle}</p>
+    )}
+
+    <!-- 通用路线：半日 / 全日 -->
+    <div class="grid md:grid-cols-2 gap-5 mb-12">
+      {general.map((route) => (
+        <article class="rounded-3xl border p-6 flex flex-col h-full" style="background: var(--card-bg); border-color: var(--border-color); box-shadow: var(--card-shadow);">
+          <div class="flex items-baseline justify-between gap-3 mb-3">
+            <h3 class="font-display text-xl font-semibold" style="color: var(--text-primary);">{route.title}</h3>
+            <span class="text-xs whitespace-nowrap rounded-full px-3 py-1" style="background: var(--bg-secondary); color: var(--text-muted);">{route.duration}</span>
+          </div>
+          <p class="text-sm leading-relaxed mb-4" style="color: var(--text-secondary);">{route.summary}</p>
+          <ol class="space-y-2 mb-4">
+            {(route.steps ?? []).map((step, index) => (
+              <li class="flex gap-3 text-sm leading-relaxed" style="color: var(--text-secondary);">
+                <span class="shrink-0 w-6 h-6 rounded-full inline-flex items-center justify-center text-xs font-semibold" style="background: var(--bg-secondary); color: var(--text-primary);">{index + 1}</span>
+                <span>{step}</span>
+              </li>
+            ))}
+          </ol>
+          {route.bestFor && (
+            <p class="mt-auto text-xs leading-relaxed pt-3 border-t" style="border-color: var(--border-color); color: var(--text-muted);">
+              <span class="font-semibold">{t.bestForLabel}</span> {route.bestFor}
+            </p>
+          )}
+        </article>
+      ))}
+    </div>
+
+    <!-- 按人群定制 -->
+    <h3 class="font-display text-2xl font-semibold mb-4" style="color: var(--text-primary);">{t.audienceLabel}</h3>
+    <div class="grid md:grid-cols-3 gap-5">
+      {audiences.map((plan) => (
+        <article class="rounded-3xl border p-6 flex flex-col h-full" style="background: var(--bg-secondary); border-color: var(--border-color);">
+          <span class="text-2xl leading-none mb-3" aria-hidden="true">{plan.icon}</span>
+          <h4 class="font-display text-lg font-semibold" style="color: var(--text-primary);">{plan.title}</h4>
+          <p class="text-xs mt-1 mb-3" style="color: var(--text-muted);">{t.durationLabel}: {plan.duration}</p>
+          <p class="text-sm leading-relaxed mb-4" style="color: var(--text-secondary);">{plan.focus}</p>
+          <ul class="space-y-2">
+            {(plan.plan ?? []).map((step) => (
+              <li class="flex gap-2 text-sm leading-relaxed" style="color: var(--text-secondary);">
+                <span aria-hidden="true" style="color: var(--accent);">•</span>
+                <span>{step}</span>
+              </li>
+            ))}
+          </ul>
+          {plan.tip && (
+            <p class="mt-auto text-xs leading-relaxed pt-4" style="color: var(--text-muted);">
+              <span class="font-semibold">{t.tipLabel}</span> {plan.tip}
+            </p>
+          )}
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

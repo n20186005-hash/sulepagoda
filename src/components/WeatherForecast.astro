@@ -1,0 +1,169 @@
+---
+import { getI18n } from '../i18n/ui';
+import { getWeather, buildAdvice, conditionIcon, conditionKey, clockFromIso } from '../lib/weather';
+
+const { messages } = getI18n(Astro.url);
+const w = messages.weather ?? {};
+const a = w.advice ?? {};
+const adviceItems: Record<string, string> = a.items ?? {};
+const groups = a.groups ?? {};
+const conditions: Record<string, string> = w.conditions ?? {};
+const data = await getWeather();
+
+const labelOf = (code: number) => conditions[conditionKey(code)] ?? '';
+const iconOf = (code: number) => conditionIcon[conditionKey(code)];
+
+const updatedAt = new Intl.DateTimeFormat('en-GB', {
+  timeZone: 'Asia/Yangon',
+  hour: '2-digit',
+  minute: '2-digit',
+  hour12: false,
+}).format(new Date());
+
+const weekdayOf = (iso: string) => {
+  const names: string[] = w.dayNames ?? [];
+  const parsed = new Date(`${iso}T12:00:00Z`);
+  return Number.isNaN(parsed.getTime()) ? '' : (names[parsed.getUTCDay()] ?? '');
+};
+
+const advice = data ? buildAdvice(data) : null;
+
+const textOf = (id: string) => adviceItems[id] ?? '';
+
+const blocks = advice
+  ? [
+      { key: 'outfit', icon: '👕', title: groups.outfit, items: advice.outfit },
+      { key: 'plan', icon: '🧭', title: groups.plan, items: advice.plan },
+      { key: 'pack', icon: '🎒', title: groups.pack, items: advice.pack },
+    ].filter((block) => (block.items ?? []).length > 0)
+  : [];
+
+const stats = data
+  ? [
+      { icon: '🌡️', label: w.feelsLike, value: `${data.current.apparentTemperature}°C` },
+      { icon: '💧', label: w.humidity, value: `${data.current.humidity}%` },
+      {
+        icon: '🌬️',
+        label: w.wind,
+        value: w.windGust && data.current.windGust > data.current.windSpeed
+          ? `${data.current.windSpeed} km/h · ${w.windGust} ${data.current.windGust} km/h`
+          : `${data.current.windSpeed} km/h`,
+      },
+      { icon: '☔', label: w.rainChance, value: `${data.today.precipitationProbability}%` },
+      { icon: '🔆', label: w.uvIndex, value: String(data.today.uvIndexMax) },
+      { icon: '🌅', label: w.sunset, value: clockFromIso(data.today.sunset) },
+    ]
+  : [];
+---
+
+<section id="weather" class="section-padding" style="background: var(--bg-primary);">
+  <div class="max-w-5xl mx-auto px-4">
+    {w.eyebrow && (
+      <p class="text-xs uppercase tracking-[0.22em] mb-3 text-center" style="color: var(--text-muted);">{w.eyebrow}</p>
+    )}
+    <h2 class="font-display text-3xl sm:text-4xl font-semibold mb-3 text-center" style="color: var(--text-primary);">{w.title}</h2>
+    {w.subtitle && (
+      <p class="text-center text-base mb-8 max-w-3xl mx-auto leading-relaxed" style="color: var(--text-secondary);">{w.subtitle}</p>
+    )}
+
+    {data && advice ? (
+      <>
+        <!-- 风险提醒：仅在触发时显示，置顶红色 -->
+        {advice.risks.length > 0 ? (
+          <div class="rounded-2xl px-5 py-4 mb-6" style="background: var(--alert-danger-bg); border-left: 4px solid var(--alert-danger-border);">
+            <p class="text-sm font-semibold mb-2" style="color: var(--alert-danger-text);">⚠️ {a.riskTitle}</p>
+            <ul class="space-y-1.5">
+              {advice.risks.map((risk) => (
+                <li class="text-sm leading-relaxed" style="color: var(--alert-danger-text);">{textOf(risk.id)}</li>
+              ))}
+            </ul>
+          </div>
+        ) : (
+          <div class="rounded-2xl px-5 py-3 mb-6 flex items-center gap-2" style="background: var(--alert-ok-bg); border-left: 4px solid var(--alert-ok-border);">
+            <span aria-hidden="true">✅</span>
+            <p class="text-sm font-medium" style="color: var(--alert-ok-text);">{a.noRiskTitle}</p>
+          </div>
+        )}
+
+        <!-- 实时状况 + 指标 -->
+        <div class="grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1.35fr)] gap-5 mb-6">
+          <div class="rounded-3xl border p-6 flex flex-col justify-between" style="background: var(--card-bg); border-color: var(--border-color); box-shadow: var(--card-shadow);">
+            <div class="flex items-start justify-between gap-3">
+              <div>
+                <p class="text-xs uppercase tracking-[0.18em]" style="color: var(--text-muted);">{w.currentLabel}</p>
+                <p class="text-5xl font-semibold mt-2 leading-none" style="color: var(--text-primary);">{data.current.temperature}°<span class="text-2xl align-top">C</span></p>
+                <p class="text-base mt-2 font-medium" style="color: var(--text-secondary);">{labelOf(data.current.weatherCode)}</p>
+                <p class="text-xs mt-1" style="color: var(--text-muted);">{data.today.tempMax}° / {data.today.tempMin}°</p>
+              </div>
+              <span class="text-5xl leading-none" aria-hidden="true">{iconOf(data.current.weatherCode)}</span>
+            </div>
+            <p class="text-xs mt-5 pt-4 border-t" style="border-color: var(--border-color); color: var(--text-muted);">
+              {w.updatedLabel} {updatedAt} · {w.timezoneLabel}
+            </p>
+          </div>
+
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+            {stats.map((s) => (
+              <div class="rounded-2xl border px-4 py-3" style="background: var(--bg-secondary); border-color: var(--border-color);">
+                <p class="text-xs" style="color: var(--text-muted);"><span aria-hidden="true">{s.icon}</span> {s.label}</p>
+                <p class="text-lg font-semibold mt-1" style="color: var(--text-primary);">{s.value}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- 三项可执行建议：出行穿搭 / 游玩安排 / 随身物品 -->
+        {blocks.length > 0 && (
+          <div class="grid sm:grid-cols-3 gap-4 mb-8">
+            {blocks.map((block) => (
+              <div class="rounded-2xl border p-5" style="background: var(--card-bg); border-color: var(--border-color);">
+                <p class="text-sm font-semibold mb-3" style="color: var(--text-primary);">
+                  <span class="mr-1.5" aria-hidden="true">{block.icon}</span>{block.title}
+                </p>
+                <ul class="space-y-2">
+                  {block.items.map((item) => (
+                    <li class="flex gap-2 text-sm leading-relaxed" style="color: var(--text-secondary);">
+                      <span aria-hidden="true" style="color: var(--advice-check);">✓</span>
+                      <span>{textOf(item.id)}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        )}
+
+        <!-- 未来 7 天 -->
+        <h3 class="font-display text-xl font-semibold mb-3" style="color: var(--text-primary);">{w.forecastTitle}</h3>
+        <ul class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3">
+          {data.daily.map((day, index) => (
+            <li class="rounded-2xl border p-3 text-center" style="background: var(--bg-secondary); border-color: var(--border-color);">
+              <p class="text-xs font-medium" style="color: var(--text-muted);">
+                {index === 0 ? w.todayLabel : weekdayOf(day.date)}
+              </p>
+              <p class="text-2xl my-2 leading-none" aria-hidden="true">{iconOf(day.weatherCode)}</p>
+              <p class="text-sm font-semibold" style="color: var(--text-primary);">{day.tempMax}° <span class="font-normal" style="color: var(--text-muted);">{day.tempMin}°</span></p>
+              <p class="text-xs mt-1" style="color: var(--text-muted);">☔ {day.precipitationProbability}%</p>
+              <span class="sr-only">{labelOf(day.weatherCode)}</span>
+            </li>
+          ))}
+        </ul>
+      </>
+    ) : (
+      <p class="rounded-2xl border px-5 py-6 text-center text-sm" style="background: var(--bg-secondary); border-color: var(--border-color); color: var(--text-muted);">
+        {w.unavailable}
+      </p>
+    )}
+
+    {a.siteNote && (
+      <div class="rounded-2xl border p-5 mt-8" style="background: var(--card-bg); border-color: var(--border-color);">
+        <p class="text-sm font-semibold mb-2" style="color: var(--text-primary);">🧭 {a.siteNoteTitle}</p>
+        <p class="text-sm leading-relaxed" style="color: var(--text-secondary);">{a.siteNote}</p>
+      </div>
+    )}
+
+    {w.seasonsNote && (
+      <p class="text-sm mt-4 leading-relaxed" style="color: var(--text-secondary);">{w.seasonsNote}</p>
+    )}
+  </div>
+</section>

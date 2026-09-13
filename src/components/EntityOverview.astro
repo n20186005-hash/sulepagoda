@@ -1,0 +1,73 @@
+---
+import { getI18n } from '../i18n/ui';
+import { entityConfig } from '../config';
+
+const { lang, messages } = getI18n(Astro.url);
+const e = messages.entity ?? {};
+const geo = e.geoHierarchy ?? [];
+const landmarks = e.landmarks ?? [];
+const directions = `https://www.google.com/maps/dir/?api=1&destination=${entityConfig.latitude},${entityConfig.longitude}`;
+const directionsLabel = lang === 'ja' ? '経路を表示' : lang === 'ko' ? '길찾기' : lang === 'zh' ? '路线导航' : lang === 'my' ? 'လမ်းကြောင်း ရှာရန်' : 'Get directions';
+---
+
+<section id="entity" class="section-padding" style="background: var(--bg-primary);">
+  <div class="max-w-4xl mx-auto px-4">
+    {e.eyebrow && (
+      <p class="text-xs uppercase tracking-[0.22em] mb-3 text-center" style="color: var(--text-muted);">{e.eyebrow}</p>
+    )}
+
+    <!-- About {{ATTRACTION_FULL_NAME}} -->
+    <h2 class="font-display text-3xl sm:text-4xl font-semibold mb-4" style="color: var(--text-primary);">{e.aboutHeading}</h2>
+    <p class="text-base sm:text-lg leading-relaxed mb-12" style="color: var(--text-secondary);">{e.aboutText}</p>
+
+    <!-- Location & How to Visit -->
+    <h2 class="font-display text-3xl sm:text-4xl font-semibold mb-4" style="color: var(--text-primary);">{e.locationHeading}</h2>
+    <p class="text-base sm:text-lg leading-relaxed" style="color: var(--text-secondary);">{e.locationText}</p>
+
+    {geo.length > 0 && (
+      <div class="mt-5">
+        <p class="text-xs uppercase tracking-[0.18em] mb-2" style="color: var(--text-muted);">{e.geoHierarchyLabel}</p>
+        <nav aria-label={e.geoHierarchyLabel} class="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm sm:text-base">
+          {geo.map((node, i) => (
+            <>
+              <span style="color: var(--text-secondary);">{node}</span>
+              {i < geo.length - 1 && <span aria-hidden="true" style="color: var(--accent);">→</span>}
+            </>
+          ))}
+        </nav>
+      </div>
+    )}
+
+    <div class="mt-6">
+      <p class="text-sm font-semibold mb-3" style="color: var(--text-primary);">{e.mapHeading}</p>
+      <div class="flex flex-wrap gap-3">
+        <a href={entityConfig.mapsShareUrl} target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-6 py-2.5 rounded-full font-semibold text-white text-sm" style="background: var(--accent);">
+          📍 {e.mapCta}
+        </a>
+        <a href={directions} target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-6 py-2.5 rounded-full font-semibold text-sm border" style="border-color: var(--border-color); color: var(--text-primary); background: var(--card-bg);">
+          🧭 {directionsLabel}
+        </a>
+      </div>
+      <p class="text-xs mt-3 leading-relaxed" style="color: var(--text-muted);">
+        {entityConfig.plusCode} · {entityConfig.latitude}, {entityConfig.longitude} · ☎ <a href={`tel:${entityConfig.telephone}`} class="underline underline-offset-2">{entityConfig.telephone}</a>
+      </p>
+    </div>
+
+    <div class="mt-12">
+      <h2 class="font-display text-3xl sm:text-4xl font-semibold mb-4" style="color: var(--text-primary);">{e.landmarksHeading}</h2>
+      <p class="text-base sm:text-lg leading-relaxed" style="color: var(--text-secondary);">{e.landmarksText}</p>
+      {landmarks.length > 0 && (
+        <ul class="mt-5 flex flex-wrap gap-2">
+          {landmarks.map((place) => (
+            <li class="px-3 py-1.5 rounded-full text-sm border" style="background: var(--card-bg); border-color: var(--border-color); color: var(--text-secondary);">{place}</li>
+          ))}
+        </ul>
+      )}
+    </div>
+
+    <div class="mt-12">
+      <h2 class="font-display text-3xl sm:text-4xl font-semibold mb-4" style="color: var(--text-primary);">{e.historyHeading}</h2>
+      <p class="text-base sm:text-lg leading-relaxed" style="color: var(--text-secondary);">{e.historyText}</p>
+    </div>
+  </div>
+</section>

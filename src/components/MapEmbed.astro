@@ -1,8 +1,9 @@
 ---
 import { getI18n } from '../i18n/ui';
+import { entityConfig } from '../config';
 const { messages } = getI18n(Astro.url);
 const m = messages.mapSection;
-const embedUrl = 'https://www.google.com/maps?q=Sule%20Pagoda%20Yangon&output=embed';
+const embedUrl = entityConfig.mapsEmbedSrc;
 ---
 
 <section id="map" class="section-padding" style="background: var(--bg-secondary);">

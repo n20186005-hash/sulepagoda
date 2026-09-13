@@ -4,9 +4,16 @@ import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import SectionNav from '../../components/SectionNav.astro';
 import Hero from '../../components/Hero.astro';
 import QuickFactsDashboard from '../../components/QuickFactsDashboard.astro';
+import WeatherForecast from '../../components/WeatherForecast.astro';
 import ComplianceGuide from '../../components/ComplianceGuide.astro';
+import Stewardship from '../../components/Stewardship.astro';
 import HigashiyamaRoute from '../../components/HigashiyamaRoute.astro';
+import Itineraries from '../../components/Itineraries.astro';
+import SeasonalStrategy from '../../components/SeasonalStrategy.astro';
+import Facilities from '../../components/Facilities.astro';
 import Intro from '../../components/Intro.astro';
+import EntityOverview from '../../components/EntityOverview.astro';
+import SourcesSection from '../../components/SourcesSection.astro';
 import Transport from '../../components/Transport.astro';
 import Lodging from '../../components/Lodging.astro';
 import HumanitiesDossier from '../../components/HumanitiesDossier.astro';
@@ -21,11 +28,16 @@ import Downloads from '../../components/Downloads.astro';
 import FAQ from '../../components/FAQ.astro';
 import { getI18n, languagesList } from '../../i18n/ui';
 
-export function getStaticPaths() {
-  return languagesList.map((lang) => ({ params: { lang } }));
+// 首页包含服务端实时数据（天气与多日预报），在请求时按需渲染。
+export const prerender = false;
+
+const { lang, messages } = getI18n(Astro.url);
+
+// 仅接受受支持的语言前缀，避免产生重复内容页。
+if (!languagesList.includes(lang)) {
+  return new Response(null, { status: 404 });
 }
 
-const { messages } = getI18n(Astro.url);
 const faq = messages.faq;
 const faqLd = (() => {
   const categories = faq?.categories ?? [];
@@ -50,13 +62,19 @@ const faqLd = (() => {
   <SectionNav />
   <Hero />
   <QuickFactsDashboard />
+  <WeatherForecast />
   <Intro />
+  <EntityOverview />
   <HumanitiesDossier />
   <DeepDive />
   <Transport />
+  <Facilities />
   <HigashiyamaRoute />
+  <Itineraries />
+  <SeasonalStrategy />
   <HiddenRules />
   <ComplianceGuide />
+  <Stewardship />
   <Lodging />
   <MapEmbed />
   <Downloads />
@@ -65,4 +83,5 @@ const faqLd = (() => {
   <Gallery />
   <FeaturedQuotes />
   <Reviews />
+  <SourcesSection />
 </BaseLayout>

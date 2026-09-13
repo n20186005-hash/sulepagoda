@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "Sule Pagoda (Yangon, Myanmar) | The golden pagoda at the heart of the city, over two millennia old",
+    "title": "Sule Pagoda (Yangon, Myanmar) - Visitor Guide & Location",
     "description": "The complete guide to Sule Pagoda (ဆူးလေစေတီတော်): a golden pagoda at the junction of Sule Pagoda Road and Maha Bandula Road in downtown Yangon, Myanmar. Believed founded during the lifetime of the Buddha over 2,000 years ago, it enshrines a hair relic of the Buddha. Its octagonal body is gilded and rises about 46 m. It is both Yangon's urban landmark and Buddhist center, and a rallying point for the 1988 and 2007 (Saffron Revolution) peaceful demonstrations. Surrounded by Maha Bandula Park, Yangon City Hall, and the Independence Monument, it is the starting point for understanding Yangon's history and urban fabric."
   },
   "header": {
@@ -46,8 +46,10 @@
   "hero": {
     "title": "Sule Pagoda (Yangon, Myanmar)",
     "subtitle": "A golden pagoda at the junction of Sule Pagoda Road and Maha Bandula Road in downtown Yangon, Myanmar. Believed founded during the lifetime of the Buddha over 2,000 years ago, it enshrines a hair relic of the Buddha. Its octagonal body is gilded and rises about 46 m. It is both Yangon's urban landmark and Buddhist center, and a rallying point for peaceful demonstrations, surrounded by Maha Bandula Park, Yangon City Hall, and the Independence Monument.",
-    "rating": "4.4 (6,531)",
-    "reviewCount": "6,531 reviews",
+    "rating": "4.4 (6,586)",
+    "reviewCount": "6,586 reviews",
+    "ratingSource": "Rating 4.4 · 6,586 Google reviews — source: Google Maps (accessed September 2026).",
+    "imageAlt": "Sule Pagoda - Main view in Yangon, Myanmar",
     "hours": "04:00–23:00 (free hours; foreign visitors pay a ticket)",
     "openMaps": "View location on Google Maps",
     "mapsUrl": "https://maps.app.goo.gl/ux28gsEjSyso9gAF9",
@@ -80,7 +82,7 @@
       "seaGlare": "Sunset tip: Sule Pagoda stands at an open downtown junction, a convenient spot to watch the city sunset. The first warm light on the gilded spire and Maha Bandula Park at dusk is the golden window for photography; Yangon is hot year-round, so bring water and sun protection.",
       "arriveLabel": "Arrive by",
       "blueHourLabel": "Blue hour",
-      "lightCaption": "Light calculated live by Open-Meteo"
+      "lightCaption": "Light quality updates with the sun"
     }
   },
   "quickFactsDashboard": {
@@ -468,12 +470,15 @@
       "Warm-toned spire at dusk, western afterglow gilding the surface."
     ],
     "viewAll": "View location on Google Maps",
+    "imageCopyright": "Image rights: all images displayed on this website remain the property and copyright of their respective photographers.",
     "showMore": "Show more photos",
     "mapsUrl": "https://maps.app.goo.gl/ux28gsEjSyso9gAF9"
   },
   "reviews": {
     "title": "Visitor Reviews",
     "declaration": "Visitor feedback is available on Google Maps (external link).",
+    "ratingSummary": "4.4 / 5 · 6,586 Google reviews",
+    "ratingSource": "Source: Google Maps visitor rating and review count, accessed September 2026. Ratings change over time — see Google Maps for the latest.",
     "featuredTitle": "Visitor Quotes",
     "featuredSubtitle": "A few short lines that capture the spirit of Sule Pagoda.",
     "moreReviews": "View on Google Maps",
@@ -546,7 +551,8 @@
     ],
     "disclaimer": "This website is an independent non-profit visitor-information project. We are not affiliated with any government agency or official organization.",
     "dataSource": "Information cited on this site is cross-checked against public materials from the Ministry of Hotels and Tourism and the Yangon Region Government, with no commercial endorsements.",
-    "dataSourceLabel": "Data Source"
+    "dataSourceLabel": "Data Source",
+    "imageCopyright": "Image rights: all images displayed on this website remain the property and copyright of their respective photographers."
   },
   "privacy": {
     "title": "Privacy Policy",
@@ -994,5 +1000,264 @@
   "audioPlayer": {
     "cta": "Click here to hear the warm sound that has accompanied Burmese people for generations",
     "title": "သီချင်း (Thaching · Burmese folk song)"
+  },
+  "entity": {
+    "eyebrow": "Visitor Guide & Location",
+    "aboutHeading": "About Sule Pagoda",
+    "aboutText": "Welcome to Sule Pagoda, widely recognized as the central Sule Pagoda landmark. Located in the heart of Yangon, Yangon Region, Myanmar (Burma), this destination serves as a primary hub for travelers visiting the region. Sule Pagoda (ဆူးလေစေတီတော်) enshrines a hair relic of the Buddha, and its octagonal gilded body rises about 46 m at the junction of Sule Pagoda Road and Maha Bandula Road.",
+    "locationHeading": "Location & How to Visit Sule Pagoda in Yangon",
+    "locationText": "Sule Pagoda is located in Yangon, Yangon Region, Myanmar (Burma), at the junction of Sule Pagoda Road and Maha Bandula Road, Yangon 11141 (Plus Code Q5F5+WG). Coordinates: 16.7744222, 96.1587556. It is a short walk from Yangon Central Railway Station and the surrounding downtown blocks, or about 30–45 minutes by taxi / Grab from Yangon International Airport (RGN).",
+    "geoHierarchyLabel": "Where it sits",
+    "geoHierarchy": ["Sule Pagoda", "Yangon", "Yangon Region", "Myanmar (Burma)"],
+    "landmarksHeading": "Landmarks & Attractions Around Sule Pagoda",
+    "landmarksText": "When visiting Sule Pagoda, visitors can easily explore surrounding historical landmarks and points of interest, including Maha Bandula Park and Yangon City Hall.",
+    "landmarks": ["Maha Bandula Park", "Yangon City Hall", "Independence Monument", "Bogyoke Aung San Market", "Shwedagon Pagoda"],
+    "historyHeading": "History & Significance of Sule Pagoda",
+    "historyText": "Sule Pagoda is believed to have been founded during the lifetime of the Buddha, more than 2,000 years ago, and enshrines a hair relic of the Buddha. Named after the guardian spirit Sularata (Sule Nat), it was chosen in the 1850s by engineer Alexander Fraser as the geometric centre of Yangon's colonial grid plan. In modern times it became a rallying point for the 1988 and 2007 peaceful demonstrations, and it remains a living centre of Buddhist faith in downtown Yangon.",
+    "mapHeading": "Map & Directions",
+    "mapCta": "Open in Google Maps"
+  },
+  "sources": {
+    "title": "Sources & References",
+    "subtitle": "Every fact on this page is cross-checked against the public sources listed below. This is an independent, non-profit visitor guide and is not affiliated with any official body.",
+    "ratingLabel": "Visitor rating",
+    "ratingValue": "4.4 / 5 · 6,586 Google reviews",
+    "ratingNote": "Rating and review count are taken from Google Maps at the time of the latest update (September 2026) and may change.",
+    "listLabel": "References",
+    "items": [
+      { "name": "Google Maps — Sule Pagoda", "desc": "Rating 4.4, 6,586 reviews, address, telephone and opening information", "url": "https://maps.app.goo.gl/ux28gsEjSyso9gAF9" },
+      { "name": "Ministry of Hotels and Tourism, Myanmar", "desc": "Official tourism portal of Myanmar", "url": "https://www.tourism.gov.mm" },
+      { "name": "Yangon Region Government", "desc": "Official regional government portal", "url": "https://www.yangonregion.gov.mm" },
+      { "name": "Wikipedia — Sule Pagoda", "desc": "History, legend and architectural background", "url": "https://en.wikipedia.org/wiki/Sule_Pagoda" },
+      { "name": "Open-Meteo", "desc": "Live weather and sunset data used by the light planner on this page", "url": "https://open-meteo.com" }
+    ],
+    "officialNote": "For official updates and regional tourism information, visit the Myanmar / Yangon Region official tourism portal.",
+    "officialLinkLabel": "Myanmar / Yangon Region Official Tourism Portal",
+    "imageRights": "Image rights: all images displayed on this website remain the property and copyright of their respective photographers."
+  },
+  "weather": {
+    "eyebrow": "Plan Around the Weather",
+    "title": "Live Weather & 7-Day Forecast",
+    "subtitle": "Yangon is a tropical monsoon city: a clear morning can turn into an afternoon downpour. Check the outlook before you set out, then decide whether to walk or take a taxi.",
+    "currentLabel": "Right now at the pagoda",
+    "updatedLabel": "Updated",
+    "timezoneLabel": "Yangon local time",
+    "forecastTitle": "Next 7 days",
+    "todayLabel": "Today",
+    "feelsLike": "Feels like",
+    "humidity": "Humidity",
+    "wind": "Wind",
+    "windGust": "gusts",
+    "rainChance": "Rain chance",
+    "uvIndex": "UV index",
+    "sunset": "Sunset",
+    "advisoryLabel": "What to bring",
+    "advisories": {
+      "umbrella": "Rain is likely within the next 48 hours — a compact umbrella or light raincoat is the single most useful thing in your bag.",
+      "strongSun": "UV is very high — wear a hat, sunglasses and sunscreen, and keep to the shaded side of the platform.",
+      "heat": "It feels hot and humid — carry drinking water, break in the shade, and avoid the midday peak.",
+      "comfortable": "Conditions look comfortable for a walk around the pagoda and the surrounding streets."
+    },
+    "conditions": {
+      "clear": "Clear",
+      "mainlyClear": "Mainly clear",
+      "partlyCloudy": "Partly cloudy",
+      "overcast": "Overcast",
+      "fog": "Fog",
+      "drizzle": "Drizzle",
+      "rain": "Rain",
+      "showers": "Showers",
+      "thunder": "Thunderstorm",
+      "snow": "Snow"
+    },
+    "advice": {
+      "riskTitle": "Weather risk alert",
+      "noRiskTitle": "No weather risk warnings right now",
+      "groups": {
+        "outfit": "What to wear",
+        "plan": "How to plan your visit",
+        "pack": "What to bring"
+      },
+      "siteNoteTitle": "About this site's environment",
+      "siteNote": "This is an urban cultural heritage site in the downtown grid, not a coastal or mountain destination, so sea and mountain hazards do not apply. What actually matters here is heat, humidity, rain and wind on an open-air stone platform with no roof.",
+      "items": {
+        "riskThunder": "Thunderstorms expected — do not shelter under trees, stay off the open platform during lightning, and keep away from metal railings.",
+        "riskStrongWind": "Strong winds forecast — keep clear of loose signage and scaffolding, and allow extra time because traffic slows in the wind and rain.",
+        "riskHeavyRain": "Heavy rain forecast — downtown Yangon floods quickly, so allow extra travel time and avoid low-lying underpasses.",
+        "riskFog": "Dense fog reduces visibility — transport can be delayed and distant views will be obscured.",
+        "outfitHot": "It is hot — choose light, breathable clothing and avoid heading out at midday.",
+        "outfitCold": "Cool conditions — bring a warm layer and something for your neck.",
+        "outfitWet": "Wet weather — wear a waterproof outer layer and shoes with grip; the stone surface gets slippery.",
+        "outfitWind": "Fairly windy — avoid loose long skirts and hats that blow off easily.",
+        "outfitSwing": "A big gap between day and night — bring a light jacket you can easily take on and off.",
+        "outfitHumid": "Hot and humid — quick-drying, breathable fabrics will be far more comfortable.",
+        "outfitCalm": "Comfortable conditions — ordinary clothing is fine.",
+        "planThunder": "Thunderstorms are likely — avoid water-based activities and do not stay in open ground or under trees.",
+        "planHeavyRain": "Heavy rain is likely — outdoor sightseeing is not advisable, and boat or cable-car services may be suspended.",
+        "planRain": "Rain is likely — put indoor stops first, postpone open-air sightseeing, and note the stone platform becomes slippery.",
+        "planStrongWind": "Strong winds — outdoor attractions are likely to close.",
+        "planFog": "Poor visibility — not a good time for distant viewpoints, and ferries or flights may be delayed.",
+        "planPlatform": "Midday heat is the main issue here: the shrine stands on an open stone platform with no shade, so visit early morning or after 4 p.m.",
+        "planWind": "It is fairly windy — some open-air attractions and boat services may be suspended.",
+        "planSunset": "Clear skies — good conditions for outdoor sightseeing, and a good window to stay on for sunset.",
+        "planPhoto": "Soft, even light — well suited to photography and to long, unhurried walking.",
+        "planSunny": "Fine weather — good for outdoor sightseeing and for sunrise or sunset views.",
+        "planCalm": "No weather obstacle today — any reasonable plan will work.",
+        "packRaincoat": "A raincoat rather than a long umbrella (the wind makes it hard to hold)",
+        "packUmbrella": "Umbrella or light rain jacket",
+        "packSun": "Sunscreen, sunglasses and a hat",
+        "packWater": "Plenty of drinking water and something for the heat",
+        "packWarm": "A thick coat and a scarf",
+        "packLayer": "A light jacket for the temperature drop",
+        "packMask": "A face mask for low visibility"
+      }
+    },
+    "dayNames": ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+    "unavailable": "Live weather is temporarily unavailable. Please check again in a few minutes.",
+    "seasonsNote": "The shrine stands on an open platform without a roof, so weather is the main variable of any visit: rain makes the stone slippery, and midday sun makes it uncomfortably hot underfoot. The seasonal strategy below explains how each period changes the experience."
+  },
+  "facilities": {
+    "eyebrow": "Practical Information",
+    "title": "Visitor Services & Nearby Facilities",
+    "subtitle": "A neutral overview of the kinds of services that exist in the blocks around the pagoda. We do not recommend, rank or link to any particular business — please compare options on the spot or in a map app.",
+    "neutralNote": "Neutrality note: we describe facility types only, never named shops or brands, and we accept no payment or commission from any operator.",
+    "items": [
+      { "icon": "🚻", "title": "Restrooms (WC)", "text": "Public and paid toilets are found in the surrounding commercial buildings, teahouses and shopping complexes rather than inside the shrine compound. Carry small notes for a token fee, and tissues, since supplies are often not provided." },
+      { "icon": "🅿️", "title": "Parking", "text": "Multi-storey and open car parks serve the downtown blocks around the pagoda; on-street space is scarce and parking is restricted on several main roads. Drivers should confirm opening hours and any motorcycle restrictions before setting out." },
+      { "icon": "🍽️", "title": "Food & Drink", "text": "Within a few minutes' walk you will find Myanmar teahouses, rice-and-curry shops, noodle stalls, bakeries and international fast-food chains. Teahouses are the cheapest place to sit down; vegetarian choices are easiest at Chinese- and Indian-run restaurants." },
+      { "icon": "🏨", "title": "Accommodation", "text": "The surrounding township concentrates hotels and guesthouses at every price band — budget guesthouses, mid-range city hotels and internationally managed properties, most of them within walking distance of the pagoda." },
+      { "icon": "🛒", "title": "Supermarkets & Convenience", "text": "Convenience stores, pharmacies, mobile-phone shops and a few larger supermarkets operate in the blocks around the pagoda, generally open late into the evening. This is where to buy bottled water, SIM top-ups and basic medicine." },
+      { "icon": "⛽", "title": "Fuel & Charging", "text": "Petrol stations sit on the arterial roads rather than in the historical core. Public EV charging is uncommon and still developing in Yangon, so drivers of electric vehicles should plan their range in advance." },
+      { "icon": "💵", "title": "Money & Payments", "text": "Cash in kyat remains the everyday standard around the pagoda, including at the shrine's own ticket counter. ATMs exist in the surrounding commercial blocks but are not always reliable, so keep a cash reserve." },
+      { "icon": "📶", "title": "Connectivity & Drinking Water", "text": "Mobile data coverage is good across downtown Yangon and cafés generally offer Wi-Fi. Tap water is not drinkable — buy sealed bottled or purified water and refill your own bottle where you can." }
+    ]
+  },
+  "climate": {
+    "eyebrow": "Seasonal Planner",
+    "title": "Season-by-Season Visit Strategy",
+    "subtitle": "Yangon has a tropical monsoon climate. The figures below are 30-year climatological averages for the Yangon area and describe what a typical month feels like — they are not a forecast.",
+    "tableHead": {
+      "season": "Season",
+      "months": "Months",
+      "temperature": "Average high / low",
+      "rainfall": "Average rainfall",
+      "strategy": "How to plan"
+    },
+    "rows": [
+      { "season": "Cool dry season", "months": "November – February", "temperature": "31 °C / 18 °C", "rainfall": "0–30 mm per month", "strategy": "The most comfortable window. Expect dry, bright days and genuinely cool mornings: the best period for walking the downtown grid, photographing the shrine and combining it with the market and the park. A light layer helps at dawn." },
+      { "season": "Hot season", "months": "March – mid-May", "temperature": "36 °C / 24 °C", "rainfall": "10–100 mm per month", "strategy": "Pre-monsoon heat builds to its annual peak, and the mid-April water festival brings the busiest days of the year. Visit before 9 a.m. or after 4 p.m., carry water, use the shaded side of the platform, and treat direct midday sun on stone as the main risk." },
+      { "season": "Monsoon", "months": "mid-May – October", "temperature": "30 °C / 24 °C", "rainfall": "250–580 mm per month", "strategy": "The wettest months, though rain usually arrives as intense afternoon or evening showers rather than all-day drizzle. Morning slots are the safest bet; bring an umbrella, choose shoes with grip for wet stone, and allow extra time because traffic slows sharply in heavy rain." }
+    ],
+    "indicesLabel": "Environmental conditions at a glance",
+    "indices": [
+      { "icon": "🌡️", "label": "Heat load", "value": "Highest March–May", "note": "Direct sun on the open platform is strongest from late morning to mid-afternoon." },
+      { "icon": "💧", "label": "Humidity", "value": "70–90% year-round", "note": "High humidity makes the same temperature feel hotter and slows the evaporation of sweat." },
+      { "icon": "🌧️", "label": "Rain pattern", "value": "Peak June–August", "note": "Monsoon rain is convective: short, intense bursts with dry gaps in between." },
+      { "icon": "🫁", "label": "Air quality", "value": "Poorest in the late dry season", "note": "Dry-season haze can reduce visibility and affect visitors with respiratory sensitivity." },
+      { "icon": "👥", "label": "Visitor density", "value": "Peak November–February and festival days", "note": "Cool-season months and full-moon festival days draw the largest crowds." }
+    ],
+    "methodNote": "Figures are 30-year climatological normals for the Yangon area, provided as a planning reference rather than a live forecast. Always check the current outlook above before a specific visit."
+  },
+  "itineraries": {
+    "eyebrow": "Route Planning",
+    "title": "Suggested Routes: Half-Day & Full-Day",
+    "subtitle": "Two general routes built around how much time you have, followed by three versions tuned to how you travel. Timings assume you are walking; add 15–25 minutes whenever you cross downtown by car.",
+    "durationLabel": "Duration",
+    "bestForLabel": "Best for:",
+    "tipLabel": "Tip:",
+    "halfDay": {
+      "title": "Half-day route",
+      "duration": "3–4 hours",
+      "summary": "For travellers with a single slot in the city: the shrine plus its immediate civic surroundings, all on foot.",
+      "steps": [
+        "Start at the pagoda early, before the heat and the coach groups arrive.",
+        "Circle the platform once in the silent clockwise direction.",
+        "Walk two minutes into the park opposite for the classic framed view.",
+        "Cross to the city hall and the surrounding colonial-era streets.",
+        "Finish with tea and a snack in a nearby teahouse."
+      ],
+      "bestFor": "Transit layovers, first-time visitors, and anyone travelling in the hot season."
+    },
+    "fullDay": {
+      "title": "Full-day route",
+      "duration": "6–8 hours",
+      "summary": "The shrine as the anchor of a downtown day, extended to a market and the city's larger monuments.",
+      "steps": [
+        "Early pagoda visit while the stone platform is still cool.",
+        "Breakfast at a teahouse, then the park and the civic square.",
+        "Walk or ride to the market district for crafts, textiles and lacquerware.",
+        "Lunch, then rest through the hottest hours in a museum or an air-conditioned café.",
+        "Late afternoon at a second, larger pagoda for contrast.",
+        "Return downtown for evening street food and the illuminated spire."
+      ],
+      "bestFor": "Visitors with a full day in Yangon who want context rather than a single stop."
+    },
+    "audienceLabel": "Routes by traveller type",
+    "audiences": [
+      {
+        "icon": "👨‍👩‍👧",
+        "title": "Families with children",
+        "duration": "2–3 hours",
+        "focus": "Short, shaded and flexible, with no long stretches of walking.",
+        "plan": [
+          "Arrive before 10 a.m. to avoid the strongest sun on the open platform.",
+          "Explain the platform rule simply: shoes off, walk clockwise, quiet voices.",
+          "Keep the shrine visit short and use the adjacent park for a break and a snack.",
+          "Skip the busiest festival days if you are travelling with a stroller."
+        ],
+        "tip": "A stroller is workable on the surrounding streets but awkward on the platform itself."
+      },
+      {
+        "icon": "📷",
+        "title": "Photographers & nature-minded visitors",
+        "duration": "2–4 hours",
+        "focus": "Light direction, silhouettes, and the contrast between the gilded spire and the colonial streetscape.",
+        "plan": [
+          "Shoot the spire against a clear early-morning sky from the park side.",
+          "Return before sunset for warm light on the gold, then stay for blue hour.",
+          "Use the colonnade and surrounding streets for architectural and street detail.",
+          "Ask before photographing people, particularly during prayer."
+        ],
+        "tip": "The monsoon months give the most dramatic clouds but demand protection for your gear."
+      },
+      {
+        "icon": "♿",
+        "title": "Low-mobility & step-free visitors",
+        "duration": "1.5–2.5 hours",
+        "focus": "Minimising steps and standing time while still reaching the shrine itself.",
+        "plan": [
+          "Note that the shrine stands on a raised platform reached by stairways; step-free access cannot be guaranteed, so confirm the situation on arrival.",
+          "Ask staff at the entrance which approach point is easiest — assistance arrangements vary by entrance.",
+          "Arrange a taxi drop-off at the closest approach rather than walking in from the station.",
+          "Visit in the cool dry season, and rest in the surrounding park between sections."
+        ],
+        "tip": "Travelling with a companion makes the platform far easier; allow roughly double the usual time."
+      }
+    ]
+  },
+  "stewardship": {
+    "eyebrow": "Understanding & Responsibility",
+    "title": "Heritage Science & Visitor Responsibility",
+    "subtitle": "A short, non-religious explanation of what you are looking at, and how to behave so that the site survives for the people who use it every day.",
+    "scienceHeading": "What you are looking at",
+    "scienceItems": [
+      { "icon": "🏛️", "title": "An octagonal plan", "text": "The structure is raised on an octagonal base, a form widely used in Myanmar religious architecture. Eight sides give the solid mass a symmetrical silhouette that reads the same from every approach street — which is precisely why it works as the geometric centre of a grid-plan city." },
+      { "icon": "✨", "title": "Gilding and its upkeep", "text": "The golden surface is gold leaf applied over a prepared base and renewed periodically. Gold leaf is extraordinarily thin and degrades with handling, humidity and air pollution, which is one reason touching the structure is discouraged." },
+      { "icon": "🧱", "title": "Stone, heat and rain", "text": "The open platform is paved in stone. Stone expands in the midday heat and becomes slippery when wet, so the surface you walk on is at once a heritage material and a practical safety factor." },
+      { "icon": "🌳", "title": "A green island in a dense city", "text": "The trees of the surrounding civic square form a small urban canopy in one of the most densely built parts of Yangon, moderating temperature and sheltering birds and small animals." }
+    ],
+    "responsibilityHeading": "Visitor responsibility",
+    "responsibilityItems": [
+      { "icon": "🧦", "title": "Shoes off, always", "text": "Footwear is removed before entering the platform. Bring socks if the stone is hot, and use the shoe racks rather than carrying shoes inside." },
+      { "icon": "🧭", "title": "Walk clockwise", "text": "Circling the structure in a clockwise direction is the local custom — following it is the simplest way to move with the crowd instead of against it." },
+      { "icon": "🤫", "title": "Keep voices low", "text": "This is an active place of worship, not only a monument. Keep calls and conversations quiet and silence your phone." },
+      { "icon": "🧕", "title": "Dress respectfully", "text": "Covered shoulders and knees are the basic expectation. A light scarf is useful both for covering up and for sun or dust." },
+      { "icon": "🚯", "title": "Leave no trace", "text": "Take your rubbish with you, do not smoke, and avoid leaving plastic or food offerings on the platform." },
+      { "icon": "📸", "title": "Ask before photographing people", "text": "Photographs of the architecture are generally fine, but worshippers are not exhibits. Ask first, and never photograph during prayer or ceremonies without permission." },
+      { "icon": "🪙", "title": "Give directly and honestly", "text": "Offerings belong to the shrine itself. Decide for yourself whether to give, and give directly rather than through an intermediary." },
+      { "icon": "🚫", "title": "No drones, no climbing", "text": "Unmanned aircraft are not permitted in the area, and climbing on the structure is both dangerous and prohibited." }
+    ],
+    "whyLabel": "Why it matters",
+    "whyText": "This is not a preserved ruin: it is a working shrine that local residents visit daily and in numbers at festival times. Visitor behaviour — far more than the weather — is what decides whether a place like this keeps the quiet that makes it worth visiting."
   }
 }

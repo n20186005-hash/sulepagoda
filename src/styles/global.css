@@ -41,6 +41,14 @@
   --tag-bg: var(--color-sand-200);
   --tag-text: var(--color-nature-700);
   --map-border: var(--color-sand-300);
+  /* 天气提示状态色 */
+  --alert-danger-bg: rgba(220, 38, 38, 0.08);
+  --alert-danger-border: #dc2626;
+  --alert-danger-text: #b91c1c;
+  --alert-ok-bg: rgba(22, 163, 74, 0.08);
+  --alert-ok-border: #16a34a;
+  --alert-ok-text: #15803d;
+  --advice-check: #16a34a;
 }
 
 [data-theme="dark"] {
@@ -59,6 +67,14 @@
   --tag-bg: #1e3a28;
   --tag-text: #a0c4a8;
   --map-border: #1e3a28;
+  /* 天气提示状态色（暗色模式提高亮度以保证对比度） */
+  --alert-danger-bg: rgba(248, 113, 113, 0.14);
+  --alert-danger-border: #f87171;
+  --alert-danger-text: #fca5a5;
+  --alert-ok-bg: rgba(74, 222, 128, 0.12);
+  --alert-ok-border: #4ade80;
+  --alert-ok-text: #86efac;
+  --advice-check: #4ade80;
 }
 
 * {

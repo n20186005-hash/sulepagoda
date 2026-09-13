@@ -1,0 +1,45 @@
+---
+import { getI18n } from '../i18n/ui';
+import { entityConfig } from '../config';
+
+const { messages } = getI18n(Astro.url);
+const s = messages.sources ?? {};
+const items = s.items ?? [];
+---
+
+<section id="sources" class="section-padding" style="background: var(--bg-secondary);">
+  <div class="max-w-4xl mx-auto px-4">
+    <h2 class="font-display text-3xl sm:text-4xl font-semibold mb-3 text-center" style="color: var(--text-primary);">{s.title}</h2>
+    <p class="text-center text-base mb-8 max-w-3xl mx-auto leading-relaxed" style="color: var(--text-secondary);">{s.subtitle}</p>
+
+    <div class="rounded-2xl p-6 border mb-8" style="background: var(--card-bg); border-color: var(--border-color); box-shadow: var(--card-shadow);">
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <div>
+          <div class="text-xs uppercase tracking-[0.18em]" style="color: var(--text-muted);">{s.ratingLabel}</div>
+          <div class="text-2xl font-semibold mt-1" style="color: var(--text-primary);">⭐ {s.ratingValue}</div>
+        </div>
+        <a href={entityConfig.rating.sourceUrl} target="_blank" rel="noopener noreferrer" class="inline-flex justify-center px-6 py-2.5 rounded-full font-semibold text-white text-sm" style="background: var(--accent);">
+          Google Maps ↗
+        </a>
+      </div>
+      <p class="text-xs mt-3 leading-relaxed" style="color: var(--text-muted);">{s.ratingNote}</p>
+    </div>
+
+    <h3 class="font-display text-xl font-semibold mb-4" style="color: var(--text-primary);">{s.listLabel}</h3>
+    <ul class="space-y-3 mb-8">
+      {items.map((item) => (
+        <li class="p-4 rounded-xl border" style="background: var(--bg-primary); border-color: var(--border-color);">
+          <a href={item.url} target="_blank" rel="noopener noreferrer" class="font-semibold hover:opacity-70 break-words" style="color: var(--accent);">{item.name} ↗</a>
+          {item.desc && <p class="text-sm mt-1 leading-relaxed" style="color: var(--text-secondary);">{item.desc}</p>}
+        </li>
+      ))}
+    </ul>
+
+    <p class="text-sm leading-relaxed" style="color: var(--text-secondary);">
+      {s.officialNote}{' '}
+      <a href={entityConfig.govtTourismUrl} target="_blank" rel="noopener noreferrer" class="underline underline-offset-2" style="color: var(--accent);">{s.officialLinkLabel}</a>
+    </p>
+
+    <p class="text-xs mt-6 leading-relaxed" style="color: var(--text-muted);">{s.imageRights}</p>
+  </div>
+</section>

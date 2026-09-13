@@ -4,7 +4,7 @@ import Header from '../components/Header.astro';
 import NoticeBanner from '../components/NoticeBanner.astro';
 import Footer from '../components/Footer.astro';
 import { getLangFromUrl, buildAlternates, htmlLangAttr, getI18n } from '../i18n/ui';
-import { ogLocale, siteConfig } from '../config';
+import { ogLocale, siteConfig, entityConfig } from '../config';
 
 interface Props {
   title: string;
@@ -20,36 +20,61 @@ const canonical = alts[lang] ?? alts.zh;
 const { messages } = getI18n(Astro.url);
 const attractionName = messages.header?.siteName ?? messages.footer?.siteName ?? messages.meta.title;
 
+// 站点与实体绑定（见 src/config.ts 变量表）
+const siteUrl = siteConfig.baseUrl.replace(/\/+$/, '');
+const abs = (p: string) => `${siteUrl}${p.startsWith('/') ? p : '/' + p}`;
+const ogImage = abs(entityConfig.heroImage);
+const heroAlt = `${entityConfig.attractionFullName} in ${entityConfig.cityName}`;
+
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'TouristAttraction',
-  name: attractionName,
+  '@id': `${siteUrl}/#attraction`,
+  name: entityConfig.attractionFullName,
+  alternateName: [
+    entityConfig.attractionShortName,
+    `${entityConfig.cityName} ${entityConfig.attractionFullName}`,
+    entityConfig.attractionNativeName,
+    attractionName,
+  ],
   description: messages.meta.description,
-  url: canonical,
-  image: 'https://sulepagoda.com/gallery/sule-pagoda-1.jpg',
+  url: siteUrl,
+  image: entityConfig.galleryImages.map(abs),
   address: {
     '@type': 'PostalAddress',
-    streetAddress: 'Junction of Sule Pagoda Road and Maha Bandula Road',
-    addressLocality: 'Yangon',
-    addressRegion: 'Yangon Region',
-    postalCode: '11141',
-    addressCountry: 'MM',
+    streetAddress: entityConfig.streetAddress,
+    addressLocality: entityConfig.cityName,
+    addressRegion: entityConfig.stateProvince,
+    postalCode: entityConfig.postalCode,
+    addressCountry: entityConfig.countryCode,
   },
-  telephone: '+951371561',
+  telephone: entityConfig.telephone,
   geo: {
     '@type': 'GeoCoordinates',
-    latitude: 16.7833,
-    longitude: 96.1667,
+    latitude: entityConfig.latitude,
+    longitude: entityConfig.longitude,
+  },
+  hasMap: entityConfig.mapsShareUrl,
+  containedInPlace: {
+    '@type': 'City',
+    name: entityConfig.cityName,
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: entityConfig.cityName,
+      addressRegion: entityConfig.stateProvince,
+      addressCountry: entityConfig.countryCode,
+    },
   },
   openingHoursSpecification: [
     {
       '@type': 'OpeningHoursSpecification',
       dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
-      opens: '04:00',
-      closes: '23:00',
+      opens: entityConfig.openingHours.opens,
+      closes: entityConfig.openingHours.closes,
     },
   ],
   isAccessibleForFree: true,
+  publicAccess: true,
   offers: [
     {
       '@type': 'Offer',
@@ -61,14 +86,18 @@ const jsonLd = {
   ],
   aggregateRating: {
     '@type': 'AggregateRating',
-    ratingValue: '4.4',
-    reviewCount: '6531',
+    ratingValue: entityConfig.rating.value,
+    reviewCount: String(entityConfig.rating.count),
+    bestRating: entityConfig.rating.best,
+    worstRating: entityConfig.rating.worst,
   },
   sameAs: [
-    'https://maps.app.goo.gl/ux28gsEjSyso9gAF9',
-    'https://en.wikipedia.org/wiki/Sule_Pagoda'
+    entityConfig.rating.sourceUrl,
+    entityConfig.govtTourismUrl,
+    'https://en.wikipedia.org/wiki/Sule_Pagoda',
   ],
 };
+
   const breadcrumbLd = (() => {
     const bc = messages.breadcrumb;
     return {
@@ -99,16 +128,32 @@ const jsonLd = {
     <link rel="alternate" hreflang="ko" href={alts.ko} />
     <link rel="alternate" hreflang="x-default" href={alts.xDefault} />
 
+    <meta property="og:site_name" content={entityConfig.attractionFullName} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonical} />
     <meta property="og:locale" content={ogLocale[lang] ?? lang} />
-    <meta property="og:image" content="https://sulepagoda.com/gallery/sule-pagoda-1.jpg" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:alt" content={heroAlt} />
+    <meta property="og:image:width" content={String(entityConfig.heroImageWidth)} />
+    <meta property="og:image:height" content={String(entityConfig.heroImageHeight)} />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:image" content="https://sulepagoda.com/gallery/sule-pagoda-1.jpg" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content={heroAlt} />
+
+    <!-- PWA -->
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="theme-color" content="#0f2015" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content={entityConfig.attractionFullName} />
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/icon-180.png" />
 
     <meta name="google-adsense-account" content="ca-pub-XXXXXXXXXX" />
     <script is:inline async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
@@ -145,5 +190,13 @@ const jsonLd = {
       <slot />
     </main>
     <Footer />
+    <script is:inline>
+      (function () {
+        if (!('serviceWorker' in navigator)) return;
+        window.addEventListener('load', function () {
+          navigator.serviceWorker.register('/sw.js', { scope: '/' }).catch(function () {});
+        });
+      })();
+    </script>
   </body>
 </html>

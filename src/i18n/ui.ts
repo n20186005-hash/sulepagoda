@@ -38,7 +38,7 @@ export function getI18n(url: URL) {
 }
 
 export function buildAlternates(path = ''): Record<string, string> {
-  const base = 'https://sulepagoda.com';
+  const base = 'https://sulepagoda.org';
   const clean = path.replace(/^\/+/, '').replace(/\/+$/, '');
   const mk = (l: string) => `${base}/${l}${clean ? '/' + clean : ''}`;
   return {

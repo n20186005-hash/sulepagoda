@@ -1,7 +1,2 @@
-export const siteConfig = {
-  name: 'Sule Pagoda',
-  baseUrl: 'https://sulepagoda.com',
-  locales: ['zh', 'en', 'my', 'ja', 'ko'] as const,
-};
-
-export default siteConfig;
+export { siteConfig, entityConfig, ogLocale } from '../config';
+export { siteConfig as default } from '../config';

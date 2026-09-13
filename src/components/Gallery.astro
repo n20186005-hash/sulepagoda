@@ -1,13 +1,18 @@
 ---
 import { getI18n } from '../i18n/ui';
+import { entityConfig } from '../config';
 const { messages } = getI18n(Astro.url);
 const g = messages.gallery;
 const totalImages = 13;
 const images = Array.from({ length: totalImages }, (_, i) => {
   const n = String(i + 1);
-  return `/gallery/sule-pagoda-${n}.webp`;
+  return `/gallery/sule-pagoda-yangon-myanmar-${n}.webp`;
 });
 const photoAlts = g.photoAlts ?? images.map(() => g.photoAlt);
+// 图片 Alt 语义绑定：实体全称 + 城市 + 国家 + 描述性说明
+const captionFor = (index) => photoAlts[index] ?? g.photoAlt;
+const altFor = (index) =>
+  `${entityConfig.attractionFullName} in ${entityConfig.cityName}, ${entityConfig.countryName} — ${captionFor(index)}`;
 ---
 
 <section id="gallery" class="section-padding" style="background: var(--bg-secondary);">
@@ -17,8 +22,8 @@ const photoAlts = g.photoAlts ?? images.map(() => g.photoAlt);
 
     <div class="gallery-grid" id="gallery-grid">
       {images.map((src, index) => (
-        <button type="button" class="gallery-item" data-index={index} aria-label={photoAlts[index] ?? g.photoAlt}>
-          <img src={src} alt={photoAlts[index] ?? g.photoAlt} loading="lazy" />
+        <button type="button" class="gallery-item" data-index={index} aria-label={altFor(index)}>
+          <img src={src} alt={altFor(index)} data-caption={captionFor(index)} loading="lazy" />
         </button>
       ))}
     </div>
@@ -28,6 +33,10 @@ const photoAlts = g.photoAlts ?? images.map(() => g.photoAlt);
         📍 {g.viewAll}
       </a>
     </div>
+
+    {g.imageCopyright && (
+      <p class="text-xs text-center mt-6 leading-relaxed" style="color: var(--text-muted);">{g.imageCopyright}</p>
+    )}
   </div>
 </section>
 
@@ -55,11 +64,13 @@ const photoAlts = g.photoAlts ?? images.map(() => g.photoAlt);
     function show(i) {
       current = (i + items.length) % items.length;
       var el = items[current];
-      var src = el.querySelector('img').getAttribute('src');
-      var alt = el.querySelector('img').getAttribute('alt');
+      var node = el.querySelector('img');
+      var src = node.getAttribute('src');
+      var alt = node.getAttribute('alt');
+      var caption = node.getAttribute('data-caption') || alt;
       img.setAttribute('src', src);
       img.setAttribute('alt', alt);
-      cap.textContent = alt;
+      cap.textContent = caption;
     }
     function open(i) {
       show(i);
