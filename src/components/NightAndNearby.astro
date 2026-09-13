@@ -1,0 +1,65 @@
+---
+import { getI18n } from '../i18n/ui';
+import { entityConfig } from '../config';
+
+const { messages } = getI18n(Astro.url);
+const n = messages.nightAndNearby ?? {};
+const nightPoints = n.nightPoints ?? [];
+const walkItems = n.walkItems ?? [];
+const mapsUrl = entityConfig.mapsShareUrl;
+---
+
+<section id="night" class="section-padding" style="background: var(--bg-secondary);">
+  <div class="max-w-4xl mx-auto px-4">
+    {n.eyebrow && (
+      <p class="text-xs uppercase tracking-[0.22em] mb-3 text-center" style="color: var(--text-muted);">{n.eyebrow}</p>
+    )}
+
+    <h2 class="font-display text-3xl sm:text-4xl font-semibold mb-4" style="color: var(--text-primary);">{n.nightHeading}</h2>
+    <p class="text-base sm:text-lg leading-relaxed" style="color: var(--text-secondary);">{n.nightIntro}</p>
+
+    {nightPoints.length > 0 && (
+      <div class="mt-8 grid gap-4 sm:grid-cols-3">
+        {nightPoints.map((p) => (
+          <div class="rounded-2xl p-5 border h-full" style="background: var(--card-bg); border-color: var(--border-color);">
+            <p class="font-semibold mb-2" style="color: var(--text-primary);">{p.title}</p>
+            <p class="text-sm leading-relaxed" style="color: var(--text-secondary);">{p.text}</p>
+          </div>
+        ))}
+      </div>
+    )}
+
+    {n.nightTip && (
+      <p class="mt-6 text-sm leading-relaxed rounded-2xl px-5 py-4" style="background: var(--bg-tertiary); color: var(--text-secondary);">
+        💡 {n.nightTip}
+      </p>
+    )}
+
+    <h2 class="font-display text-3xl sm:text-4xl font-semibold mt-14 mb-4" style="color: var(--text-primary);">{n.walkHeading}</h2>
+    <p class="text-base sm:text-lg leading-relaxed" style="color: var(--text-secondary);">{n.walkIntro}</p>
+
+    {walkItems.length > 0 && (
+      <ul class="mt-8 space-y-3">
+        {walkItems.map((w) => (
+          <li class="rounded-2xl p-5 border flex flex-col sm:flex-row sm:items-start gap-2 sm:gap-5" style="background: var(--card-bg); border-color: var(--border-color);">
+            <span class="shrink-0 text-xs font-semibold px-3 py-1 rounded-full self-start whitespace-nowrap" style="background: var(--tag-bg); color: var(--tag-text);">🚶 {w.time}</span>
+            <span class="min-w-0">
+              <span class="font-semibold block mb-1" style="color: var(--text-primary);">{w.name}</span>
+              <span class="text-sm leading-relaxed block" style="color: var(--text-secondary);">{w.text}</span>
+            </span>
+          </li>
+        ))}
+      </ul>
+    )}
+
+    {n.walkTip && (
+      <p class="mt-6 text-sm leading-relaxed" style="color: var(--text-muted);">{n.walkTip}</p>
+    )}
+
+    <div class="mt-8">
+      <a href={mapsUrl} target="_blank" rel="noopener noreferrer" class="inline-flex w-full sm:w-auto justify-center px-8 py-3 rounded-full font-semibold text-white" style="background: var(--accent);">
+        📍 {n.walkCta}
+      </a>
+    </div>
+  </div>
+</section>

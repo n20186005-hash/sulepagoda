@@ -17,7 +17,7 @@ const toggles = [
 ];
 ---
 
-<BaseLayout title={c.title} description={c.description} path="cookie-settings">
+<BaseLayout title={c.title} description={c.metaDescription ?? c.description} path="cookie-settings" robots="noindex, follow" entityLd={false}>
   <section class="section-padding" style="background: var(--bg-secondary);">
     <div class="max-w-3xl mx-auto px-4">
       <a href={homeHref} class="text-sm hover:opacity-70" style="color: var(--accent);">← {messages.header.backToHome}</a>

@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "Sule Pagoda (Yangon, Myanmar) - Visitor Guide & Location",
-    "description": "The complete guide to Sule Pagoda (ဆူးလေစေတီတော်): a golden pagoda at the junction of Sule Pagoda Road and Maha Bandula Road in downtown Yangon, Myanmar. Believed founded during the lifetime of the Buddha over 2,000 years ago, it enshrines a hair relic of the Buddha. Its octagonal body is gilded and rises about 46 m. It is both Yangon's urban landmark and Buddhist center, and a rallying point for the 1988 and 2007 (Saffron Revolution) peaceful demonstrations. Surrounded by Maha Bandula Park, Yangon City Hall, and the Independence Monument, it is the starting point for understanding Yangon's history and urban fabric."
+    "title": "Sule Pagoda Yangon: Opening Hours, Tickets & Location",
+    "description": "Sule Pagoda (ဆူးလေစေတီတော်) in downtown Yangon: ticket prices, opening hours, dress code, night views, and how to reach it via Sule Pagoda Road."
   },
   "header": {
     "siteName": "Sule Pagoda (ဆူးလေစေတီတော်)",
@@ -523,6 +523,28 @@
         "text": "About 10 min walk from Central Station to the platform; the city and corner shrines along the way are pleasant for a half-day stroll."
       }
     ]
+  },
+  "nightAndNearby": {
+    "eyebrow": "After Dark & On Foot",
+    "nightHeading": "Visiting Sule Pagoda at Night",
+    "nightIntro": "The pagoda stays open until 23:00. After sunset the floodlights turn the gilded octagon into a glowing landmark above the traffic circle — night is when this downtown grid is at its most photogenic.",
+    "nightPoints": [
+      { "title": "Best time", "text": "The lights come on around 18:30–19:00, just after sunset. Arrive in the blue hour for the strongest contrast between the gold spire and a deep blue sky." },
+      { "title": "Where to stand", "text": "The south-east corner of the platform looks down Sule Pagoda Road; the Maha Bandula Park side frames the spire together with City Hall." },
+      { "title": "Shooting tips", "text": "The gilded surface is extremely bright at night. Hold the highlights, brace against a railing or bring a small tripod — long exposure turns passing traffic into light trails." }
+    ],
+    "nightTip": "After dark the platform is cooler and much quieter, but keep a respectful distance from worshippers and never use flash during prayer. The junction itself is busy — watch your belongings.",
+    "walkHeading": "Walking Sule Pagoda Road, Maha Bandula Road & Sule Square",
+    "walkIntro": "The pagoda sits in a walkable downtown grid, so several stops can be strung together on foot without taking a taxi.",
+    "walkItems": [
+      { "name": "Maha Bandula Park", "time": "2 min walk", "text": "Directly across Maha Bandula Road: an open lawn with the Independence Monument, and the best spot for a full view of the spire." },
+      { "name": "Yangon City Hall", "time": "3 min walk", "text": "The colonial-era landmark on the park's east side, facing the pagoda across the junction." },
+      { "name": "Sule Square", "time": "1 min walk", "text": "The office and retail tower right beside the pagoda — useful for air-conditioned shelter, cafés and toilets when it pours." },
+      { "name": "Bogyoke Aung San Market", "time": "15 min walk", "text": "Straight up Sule Pagoda Road, then left onto Bogyoke Aung San Road: crafts, textiles and souvenirs all under one roof." },
+      { "name": "Shwedagon Pagoda", "time": "10 min by taxi", "text": "About 3 km north. Pair the two on the same day and come back for the Sule Pagoda night lights." }
+    ],
+    "walkTip": "Pavements around the junction are uneven and often blocked by vendors. Cross at the signalised crossings, and take a taxi after dark.",
+    "walkCta": "See the surrounding streets on Google Maps"
   },
   "mapSection": {
     "title": "How to Get There",

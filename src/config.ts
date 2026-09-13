@@ -27,6 +27,12 @@ export const entityConfig = {
   attractionShortName: 'Sule Pagoda',
   /** 本地语种名称（用于 alternateName） */
   attractionNativeName: 'ဆူးလေစေတီတော်',
+  /**
+   * 其他常用名与拼写变体（用于 alternateName）。
+   * 覆盖 GSC 中已出现曝光的写法：sule paya / sulay pagoda / 苏雷宝塔，
+   * 帮助 Google 把这些查询变体归并到同一实体。
+   */
+  alternateNames: ['苏雷宝塔', '苏雷佛塔', 'Sule Paya', 'Sulay Pagoda'],
   /** {{CITY_NAME}} */
   cityName: 'Yangon',
   /** {{STATE_PROVINCE}} */

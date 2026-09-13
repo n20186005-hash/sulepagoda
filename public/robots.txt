@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# 法律与设置页已通过 <meta name="robots" content="noindex, follow"> 处理，
+# 故意不在此处 Disallow —— 一旦屏蔽抓取，Google 就看不到 noindex 标签。
+
+Sitemap: https://sulepagoda.org/sitemap.xml

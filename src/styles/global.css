@@ -107,7 +107,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Map container */
+.map-container {
+  width: 100%;
+  max-width: 100%;
+}
+
 .map-container iframe {
+  display: block;
+  width: 100%;
+  max-width: 100%;
   border: 0;
   border-radius: 12px;
 }

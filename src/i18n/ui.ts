@@ -5,6 +5,7 @@ import shn from './shn.json';
 import mnw from './mnw.json';
 import ja from './ja.json';
 import ko from './ko.json';
+import { siteConfig } from '../config';
 
 export const defaultLang = 'my';
 export const languagesList = ['zh', 'en', 'my', 'ja', 'ko'] as const;
@@ -38,9 +39,12 @@ export function getI18n(url: URL) {
 }
 
 export function buildAlternates(path = ''): Record<string, string> {
-  const base = 'https://sulepagoda.org';
+  // 域名只在 siteConfig 中维护一处，避免 canonical / hreflang / sitemap 之间出现主机名分歧
+  const base = siteConfig.baseUrl.replace(/\/+$/, '');
   const clean = path.replace(/^\/+/, '').replace(/\/+$/, '');
-  const mk = (l: string) => `${base}/${l}${clean ? '/' + clean : ''}`;
+  // 统一带尾部斜杠：build.format 为 directory，实际可访问地址是 /en/ 而非 /en，
+  // 保持 canonical / hreflang / sitemap 与真实 URL 完全一致，避免被判定为两个地址。
+  const mk = (l: string) => `${base}/${l}${clean ? '/' + clean : ''}/`;
   return {
     zh: mk('zh'),
     en: mk('en'),
